@@ -1,19 +1,15 @@
-let CACHE_NAME = 'my-site-cache-v1';
+let CACHE_NAME = 'PWAtest';
 let urlsToCache = [
-  '/',
-  '/styles/main.css',
-  '/script/main.js'
-];
+  '/'
+  ];
 
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
-    caches.open(PWAtest)
+    caches.open(CACHE_NAME)
       .then(function(cache) {
         console.log('Opened cache');
-        return cache.addAll([
-          'index.html'
-          ]);
+        return cache.addAll(urlsToCache);
       })
   );
 });
