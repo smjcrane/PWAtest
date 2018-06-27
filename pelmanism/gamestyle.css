@@ -24,6 +24,9 @@ img.cardpic {
 	width: 130px;
 	margin: 10px;
 	pointer-events: none;
+	background: white;
+	font-size: 100px;
+	text-align: center;
 }
 
 @media (min-width: 900px) {

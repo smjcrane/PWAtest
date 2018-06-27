@@ -46,7 +46,8 @@
 		let cards = document.querySelectorAll('div[class="card"]');
 		let pictures = document.querySelectorAll('img[class="cardpic"]');
 
-		let image_sources = ["cat.jpg", "dog.jpg", "duck.jpg", "sloth.jpg", "horse.jpg", "dolphin.dms", "parrot.jpg", "lizard.jpg"];
+		let image_sources = ["bcat.jpg", "dog.jpg", "duck.jpg", "sloth.jpg", "horse.jpg", "dolphin.dms", "parrot.jpg", "lizard.jpg"];
+		let alphabet = ["A", "B", "C", "D", "E", "F", "G", "H"];
 
 		let button = document.getElementById("reset");
 
@@ -77,6 +78,8 @@
 			for (let i = 0; i <8; i++){
 				cards[arr[2*i+2]-1].children[0].setAttribute("src", image_sources[i]);
 				cards[arr[2*i+1]-1].children[0].setAttribute("src", image_sources[i]);
+				cards[arr[2*i+2]-1].children[0].setAttribute("alt", alphabet[i]);
+				cards[arr[2*i+1]-1].children[0].setAttribute("alt", alphabet[i]);
 			}
 			return pairs;
 		};
