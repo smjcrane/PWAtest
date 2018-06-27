@@ -7,7 +7,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
   installPromptEvent = event;
   console.log("Install prompt found");
   // Update the install UI to notify the user app can be installed
-  document.querySelector('#installation').style.setProperty("visibility", "hidden");
+  document.querySelector('#installation').style.setProperty("visibility", "visible");
 });
 
 
