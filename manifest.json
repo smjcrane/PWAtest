@@ -3,12 +3,12 @@
   "name": "Progressive Web App Test",
   "icons": [
     {
-      "src": "/images/smallbug.png",
+      "src": "/PWAtest/images/smallbug.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/images/bigicon.png",
+      "src": "/PWAtest/images/bigicon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
