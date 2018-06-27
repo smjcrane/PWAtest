@@ -1,11 +1,11 @@
 div.card {
 	background-color: red;
-	height: 200px;
-	width: 150px;
-	font-size: 30px;
+	height: 25vw;
+	width: 18vw;
 	display: inline-block;
 	text-align: center;
-	margin: 20px;
+	margin: 1vw;
+	padding: 0px;
 }
 
 div.card[status="front"] {
@@ -13,24 +13,45 @@ div.card[status="front"] {
 }
 
 button {
-	font-size: 30px;
-	border-radius: 5px;
+	font-size: 3vw;
+	border-radius: 1vw;
 	position: fixed;
-	bottom: 50px;
+	bottom: 2vw;
 }
 
 img.cardpic {
-	height: 180px;
-	width: 130px;
-	margin: 10px;
+	height: 23vw;
+	width: 16vw;
+	margin: 1vw;
 	pointer-events: none;
 	background: white;
-	font-size: 100px;
+	font-size: 40px;
 	text-align: center;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
 	div.board {
-		width: 900px;
+		width: 1000px;
+	}
+
+	div.card {
+	height: 250px;
+	width: 180px;
+	font-size: 30px;
+	margin: 10px;
+	padding: 0px;
+	}
+
+	button {
+		font-size: 30px;
+		border-radius: 10px;
+		bottom: 20px;
+	}
+
+	img.cardpic {
+		height: 230px;
+		width: 160px;
+		margin: 10px;
+		font-size: 200px;
 	}
 }
