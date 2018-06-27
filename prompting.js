@@ -1,5 +1,4 @@
 let installPromptEvent;
-let btnInstall = document.querySelector('#install-button');
 
 window.addEventListener('beforeinstallprompt', (event) => {
   // Prevent Chrome <= 67 from automatically showing the prompt
@@ -11,7 +10,7 @@ window.addEventListener('beforeinstallprompt', (event) => {
 });
 
 
-btnInstall.addEventListener('click', () => {
+document.querySelector('#install-button').addEventListener('click', () => {
   // Update the install UI to remove the install button
   btnInstall.disabled = true;
   // Show the modal add to home screen dialog
