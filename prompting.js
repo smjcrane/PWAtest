@@ -6,13 +6,13 @@ window.addEventListener('beforeinstallprompt', (event) => {
   // Stash the event so it can be triggered later.
   installPromptEvent = event;
   // Update the install UI to notify the user app can be installed
-  btnInstall.disabled = false;
+  document.querySelector('#install-button').disabled = false;
 });
 
 
 document.querySelector('#install-button').addEventListener('click', () => {
   // Update the install UI to remove the install button
-  btnInstall.disabled = true;
+  document.querySelector('#install-button').disabled = true;
   // Show the modal add to home screen dialog
   installPromptEvent.prompt();
   // Wait for the user to respond to the prompt
