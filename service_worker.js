@@ -8,10 +8,12 @@ let urlsToCache = [
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
-    caches.open(CACHE_NAME)
+    caches.open(PWAtest)
       .then(function(cache) {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        return cache.addAll([
+          'index.html'
+          ]);
       })
   );
 });
