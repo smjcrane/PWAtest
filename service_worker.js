@@ -1,6 +1,6 @@
 let CACHE_NAME = 'pwa-test';
 let urlsToCache = [
-  '/index.html'
+  '/PWAtest/index.html'
   /*,
   '/pelmanism/game.html',
   '/pelmanism/gamestyle.css'*/
