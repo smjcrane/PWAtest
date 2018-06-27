@@ -6,9 +6,6 @@ let urlsToCache = [/*
   */
   ];
 
-importScripts('/cache-polyfill.js');
-
-
 self.addEventListener('install', function(event) {
   // Perform install steps
   event.waitUntil(
