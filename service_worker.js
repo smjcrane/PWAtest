@@ -1,8 +1,9 @@
 let CACHE_NAME = 'PWAtest';
 let urlsToCache = [
   '/',
-  '/pelmanism/game.html',
+  /*'/pelmanism/game.html',
   '/pelmanism/gamestyle.css'
+  */
   ];
 
 self.addEventListener('install', function(event) {
