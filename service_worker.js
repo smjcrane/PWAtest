@@ -1,10 +1,13 @@
 let CACHE_NAME = 'pwa-test';
-let urlsToCache = [
+let urlsToCache = [/*
   '/'/*,
   '/pelmanism/game.html',
   '/pelmanism/gamestyle.css'
   */
   ];
+
+importScripts('/cache-polyfill.js');
+
 
 self.addEventListener('install', function(event) {
   // Perform install steps
