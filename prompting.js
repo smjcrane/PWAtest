@@ -7,13 +7,13 @@ window.addEventListener('beforeinstallprompt', (event) => {
   installPromptEvent = event;
   console.log("Install prompt found");
   // Update the install UI to notify the user app can be installed
-  document.querySelector('#installation').visibility = "visible";
+  document.querySelector('#installation').style.setProperty("visibility", "hidden");
 });
 
 
 document.querySelector('#install-button').addEventListener('click', () => {
   // Update the install UI to remove the install button
-  document.querySelector('#installation').visibility = "hidden";
+  document.querySelector('#installation').style.setProperty("visibility", "hidden");
   // Show the modal add to home screen dialog
   installPromptEvent.prompt();
   // Wait for the user to respond to the prompt
