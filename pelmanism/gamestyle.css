@@ -1,0 +1,33 @@
+div.card {
+	background-color: red;
+	height: 200px;
+	width: 150px;
+	font-size: 30px;
+	display: inline-block;
+	text-align: center;
+	margin: 20px;
+}
+
+div.card[status="front"] {
+	background-color: blue;
+}
+
+button {
+	font-size: 30px;
+	border-radius: 5px;
+	position: fixed;
+	bottom: 50px;
+}
+
+img.cardpic {
+	height: 180px;
+	width: 130px;
+	margin: 10px;
+	pointer-events: none;
+}
+
+@media (min-width: 900px) {
+	div.board {
+		width: 900px;
+	}
+}

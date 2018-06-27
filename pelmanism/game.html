@@ -1,0 +1,147 @@
+<!doctype HTML>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="gamestyle.css">
+	<title>My JS Game</title>
+
+</head>
+
+<body>
+	<center>
+	<h1>Pick a card</h1>
+
+	<div class="board" style="margin-bottom:100px">
+		<div class="card", key=1 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=2 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=3 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=4 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=5 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=6 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=7 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=8 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=9 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=10 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=11 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=12 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=13 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=14 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=15 status="back"> <img class="cardpic"> </div>
+		<div class="card", key=16 status="back"> <img class="cardpic"> </div>
+
+	</div>
+
+	<br />
+
+	<button id="reset">RESET</button>
+
+	<script>
+		"use strict";
+
+		let winner = 0;
+		let firstguess = true;
+		let oldCard;
+		let pairs;
+		let numFound = 0;
+
+		let cards = document.querySelectorAll('div[class="card"]');
+		let pictures = document.querySelectorAll('img[class="cardpic"]');
+
+		let image_sources = ["cat.jpg", "dog.jpg", "duck.jpg", "sloth.jpg", "horse.jpg", "dolphin.dms", "parrot.jpg", "lizard.jpg"];
+
+		let button = document.getElementById("reset");
+
+		function sleep(ms) {
+  			return new Promise(resolve => setTimeout(resolve, ms));
+		}
+
+		function makepairs(){
+			//assign the cards to pairs and return as an array
+			let arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+			for (let i = 1; i <=16; i++){
+				let r = Math.ceil(Math.random() * 16);
+				let old1 = arr[i];
+				let old2 = arr[r];
+				arr[i] = old2;
+				arr[r] = old1;
+			}
+			pairs = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+			for (let i = 1; i <=8; i++){
+				let p1 = arr[2*i-1];
+				let p2 = arr[2*i];
+				pairs[p1] = p2;
+				pairs[p2] = p1;
+			}
+			console.log(arr);
+			console.log(pairs);
+			//set picture sources
+			for (let i = 0; i <8; i++){
+				cards[arr[2*i+2]-1].children[0].setAttribute("src", image_sources[i]);
+				cards[arr[2*i+1]-1].children[0].setAttribute("src", image_sources[i]);
+			}
+			return pairs;
+		};
+		
+		function guess(myCard) {
+			console.log("You guessed "+myCard.getAttribute("key"));
+			if (myCard.getAttribute("key") == winner) {
+				console.log("You found a pair");
+				alert("You found a pair!");
+				numFound++;
+				if (numFound == 8){
+					alert("You win!");
+				}
+				return true;
+			}
+			return false;
+		}
+
+		async function flip(e){
+			let myCard = e.target;
+
+			console.log("You clicked "+myCard.getAttribute("key"));
+			if (myCard.getAttribute("status") == "front") {
+				console.log("not proceeding");
+				return;
+			}
+			myCard.setAttribute("status", "front");
+			myCard.children[0].style.setProperty("visibility", "visible");
+			if (firstguess){
+				oldCard = e.target;
+				winner = pairs[myCard.getAttribute("key")];
+				firstguess = false;
+			} else {
+				if (!(guess(myCard))){
+					await sleep(1000);
+					unflip(myCard)
+					unflip(oldCard)
+				}
+				firstguess = true;
+				winner = 0;
+			}
+		};
+
+		function unflip(myCard){
+			myCard.setAttribute("status", "back");
+			myCard.children[0].style.setProperty("visibility", "hidden");
+		};
+
+		function reset(){
+			numFound = 0;
+			cards.forEach(function(c) {
+				unflip(c);
+			})
+			makepairs();
+			console.log("Game reset");
+		}
+
+		cards.forEach(function(c) {
+			c.addEventListener('click', flip);
+		});
+
+		button.addEventListener('click', reset);
+
+		reset();
+
+	</script>
+	</center>
+</body>
